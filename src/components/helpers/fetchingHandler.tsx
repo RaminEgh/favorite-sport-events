@@ -2,10 +2,10 @@ import {Alert, Spinner} from 'react-bootstrap'
 import {useState} from 'react'
 
 const FetchingHandler = ({fetch}) => {
+    console.log(fetch.status)
     const [show, setShow] = useState(true)
-    const {data, error, isLoading, isFetching, isSuccess} = fetch
-    if (data || isSuccess) return null
-    if (isLoading || isFetching) {
+    const {error, isLoading, isFetching, status} = fetch
+    if (isFetching || isLoading || status === 'pending') {
         return <div className='backdrop'>
             <Spinner animation="grow"/>
         </div>

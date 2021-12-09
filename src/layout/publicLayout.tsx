@@ -1,8 +1,9 @@
-import {Container, Row} from 'react-bootstrap'
-const Public = ({children}) => {
-    return <Container fluid>
+import {Container} from 'react-bootstrap'
+
+const PublicLayout = ({children}) => {
+    return <Container fluid='xl' style={{paddingTop: '16px', paddingBottom: '16px'}}>
         {children}
     </Container>
 }
 
-export default Public
+export default PublicLayout

@@ -1,31 +1,31 @@
 import {Nav} from 'react-bootstrap'
 import {useState} from 'react'
 
-const NavsButton = ({onNavsButtonClick}) => {
+const NavButtons = ({onNavsButtonClick}) => {
 
-    const [selectedNav, setSelectedNav] = useState('1')
+    const [selectedNav, setSelectedNav] = useState('0')
 
     const onSelectHandle = (key) => {
         setSelectedNav(key)
         onNavsButtonClick(key)
     }
 
-    return <Nav fill={true} variant="pills" activeKey={selectedNav} onSelect={(eventKey) => onSelectHandle(eventKey)}>
+    return <Nav className='navButtons' fill={true} variant="pills" activeKey={selectedNav} onSelect={(eventKey) => onSelectHandle(eventKey)}>
         <Nav.Item>
-            <Nav.Link eventKey="-1" href="#yesterday">
+            <Nav.Link eventKey="-1" href="">
                 Yesterday
             </Nav.Link>
         </Nav.Item>
 
         <Nav.Item>
-            <Nav.Link eventKey="0" href="#today">
+            <Nav.Link eventKey="0" href="">
                 Today
             </Nav.Link>
         </Nav.Item>
 
 
         <Nav.Item>
-            <Nav.Link eventKey="1" href="#tomorrow">
+            <Nav.Link eventKey="1" href="">
                 Tomorrow
             </Nav.Link>
         </Nav.Item>
@@ -33,4 +33,4 @@ const NavsButton = ({onNavsButtonClick}) => {
 
 }
 
-export default NavsButton
+export default NavButtons
