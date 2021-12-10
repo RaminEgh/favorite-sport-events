@@ -10,7 +10,7 @@ const MatchItemEvents = ({item}) => {
                         <strong>{eventItem.homeTeam.name}</strong>
                     </div>
                     <div className='eventItem--time'>
-                        <strong>{timestampToTime(eventItem.startTimestamp)}</strong>
+                        <span>{timestampToTime(eventItem.startTimestamp)}</span>
                     </div>
                     <div className='eventItem--away'>
                         <strong> {eventItem.awayTeam.name}</strong>

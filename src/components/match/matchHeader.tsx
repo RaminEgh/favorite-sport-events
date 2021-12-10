@@ -8,7 +8,7 @@ const MatchHeader = ({id, logo, name, onStartClick, isFavorite}) => {
             <strong className='title'>{name}</strong>
         </div>
         <span className='icon-btn' title='add to favorite' onClick={() => onStartClick(id)}>
-            <Image src={`/assets/icons/star-${isFavorite ? 'solid' : 'regular'}.svg`} width={25} height={25} alt='add to favorite'/>
+            <Image src={`/assets/icons/star-${isFavorite ? 'solid' : 'regular'}.svg`} width={24} height={24} alt='add to favorite'/>
         </span>
     </div>
 }
