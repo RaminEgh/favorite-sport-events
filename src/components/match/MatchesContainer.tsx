@@ -3,6 +3,7 @@ import {useContext} from 'react'
 import MatchHeader from './matchHeader'
 import MatchItemEvents from './matchItemEvents'
 import LocalStorageContext from 'contexts/localStorageContext'
+import NoItemFound from 'components/helpers/noItemFound'
 
 const MatchesContainer = ({items}) => {
     const {matchFavorites, setMatchFavorites} = useContext(LocalStorageContext)
@@ -21,7 +22,7 @@ const MatchesContainer = ({items}) => {
 
     return <Card className='matchItem'>
         {
-            items?.length === 0 ? <h3 style={{textAlign: 'center'}}>no item</h3> : items?.map((item) => {
+            items?.length === 0 ? <NoItemFound/> : items?.map((item) => {
                 return <div key={item.id}>
                     <MatchHeader id={item.id} logo={item.logo} name={item.name} onStartClick={onStarClickHandle}
                                  isFavorite={matchFavorites.includes(item.id)}/>

@@ -1,5 +1,4 @@
 import {NavsButton, MatchesContainer, FetchingHandler} from 'components'
-import {Tab, Tabs} from 'react-bootstrap'
 import {getDate} from 'helpers'
 import {useLazyMatchesQuery} from 'services/matchApi'
 import {useContext, useEffect, useState} from 'react'
@@ -15,7 +14,7 @@ const Matches = ({matches}: any) => {
     const [favoritesData, setFavoritesData] = useState([])
 
     const handleNewTabSelected = (eventKey) => {
-        if (eventKey === 'favorites') {
+        if (eventKey === '1') {
             if (!data.data) {
                 trigger(selectedDate)
             }
@@ -38,19 +37,15 @@ const Matches = ({matches}: any) => {
     }
 
 
-    return <div>
-        <NavsButton onNavsButtonClick={onNavsButtonClickHandle}/>
-        <FetchingHandler fetch={data} />
-        <Tabs defaultActiveKey="all" id="uncontrolled-tab-example" className="mb-3" onSelect={handleNewTabSelected}>
-            <Tab eventKey="all" title="All">
+    return <>
+        <FetchingHandler fetch={data}/>
+        <NavsButton onTabClick={handleNewTabSelected} onDateClick={onNavsButtonClickHandle}/>
+        {
+            isFavoritesTab ? <MatchesContainer items={favoritesData}/> :
                 <MatchesContainer items={data.data ?? matches}/>
-            </Tab>
-            <Tab eventKey="favorites" title="Favorites">
-                <MatchesContainer items={favoritesData}/>
-            </Tab>
-        </Tabs>
+        }
 
-    </div>
+    </>
 
 }
 
@@ -59,7 +54,7 @@ export async function getStaticProps() {
     const data = await res.json()
     return {
         revalidate: 60,
-        props: { matches: data }
+        props: {matches: data}
     }
 }
 
